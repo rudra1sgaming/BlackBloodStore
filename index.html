@@ -11,22 +11,6 @@
     <meta name="author" content="SkinsWarehouseMLBB">
     <link rel="canonical" href="https://skinswarehousemlbb.netlify.app/">
 
-    <!-- Open Graph / WhatsApp / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://skinswarehousemlbb.netlify.app/">
-    <meta property="og:title" content="SkinsWarehouseMLBB | Premium MLBB Accounts">
-    <meta property="og:description" content="Own rare skins and high-value Mobile Legends accounts from a trusted seller. Secure your perfect MLBB account today via a simple WhatsApp conversation.">
-    <meta property="og:image" content="Favicon.png">
-    <meta property="og:locale" content="en_IN">
-    <meta property="og:site_name" content="SkinsWarehouseMLBB">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="https://skinswarehousemlbb.netlify.app/">
-    <meta name="twitter:title" content="SkinsWarehouseMLBB | Premium MLBB Accounts">
-    <meta name="twitter:description" content="Own rare skins and high-value Mobile Legends accounts from a trusted seller. Secure your perfect MLBB account today.">
-    <meta name="twitter:image" content="Favicon.png">
-
     <link rel="icon" type="image/png" href="Favicon.png">
     
     <!-- Google Fonts & BoxIcons -->
@@ -48,6 +32,19 @@
             overflow-x: hidden;
         }
 
+        /* Top Promo Bar */
+        .promo-bar {
+            background: linear-gradient(90deg, #d4af37, #f3e5ab);
+            color: #111;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            z-index: 100;
+            position: relative;
+        }
+
         /* Fullscreen Background Video */
         #bg-video {
             position: fixed;
@@ -65,14 +62,14 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(10, 10, 15, 0.7);
+            background: rgba(10, 10, 15, 0.75);
             z-index: -1;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             display: flex;
             flex-direction: column;
             gap: 3rem;
@@ -90,9 +87,9 @@
             text-align: center;
         }
 
-        /* Typography */
-        h1 {
-            font-size: 2.5rem;
+        /* Branding & Typography */
+        .brand-logo {
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 1rem;
             background: linear-gradient(90deg, #d4af37, #f3e5ab);
@@ -100,25 +97,63 @@
             -webkit-text-fill-color: transparent;
         }
 
-        h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
+        h2 { font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: #d4af37; }
+        h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: #ffffff; }
+        p { font-size: 1.1rem; font-weight: 300; margin-bottom: 1.5rem; color: #cccccc; }
+
+        /* Image Slider for Screenshots */
+        .slider-container {
+            position: relative;
+            max-width: 100%;
+            margin: 2rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .slides {
+            display: none;
+            width: 100%;
+            height: 250px; /* Mobile height */
+        }
+
+        @media (min-width: 768px) {
+            .slides { height: 450px; } /* Desktop height */
+        }
+
+        .slides.active {
+            display: block;
+            animation: fade 0.5s ease-in-out;
+        }
+
+        .slides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Keeps images looking sleek without stretching */
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
             color: #d4af37;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: 0.3s;
         }
+        
+        .slider-btn:hover { background: rgba(0,0,0,0.9); border-color: #d4af37; }
+        .prev { left: 10px; }
+        .next { right: 10px; }
 
-        h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-            color: #cccccc;
+        @keyframes fade {
+            from { opacity: 0.4 } 
+            to { opacity: 1 }
         }
 
         /* WhatsApp Button */
@@ -139,177 +174,54 @@
             margin-top: 1rem;
         }
 
-        .wa-btn:hover {
-            background-color: #1ebe57;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
+        .wa-btn:hover { background-color: #1ebe57; transform: translateY(-3px); }
 
-        .wa-btn i {
-            font-size: 1.4rem;
-        }
-
-        /* Scroll Down Animation */
-        .scroll-down {
-            margin-top: 2rem;
-            animation: bounce 2s infinite;
-            color: #d4af37;
-            font-size: 2rem;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-7px); }
-        }
-
-        /* Features Grid with Icons */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .feature-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        /* Floating Action Button */
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.2rem;
             font-weight: 600;
-            color: #ffffff;
             display: flex;
-            flex-direction: column;
             align-items: center;
             gap: 10px;
-        }
-
-        .feature-item i {
-            font-size: 2.5rem;
-            color: #d4af37;
-        }
-
-        /* How it Works Steps */
-        .steps {
-            text-align: left;
-            margin-top: 2rem;
-        }
-
-        .step-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-            border-left: 2px solid #d4af37;
-            position: relative;
-        }
-
-        .step-item h4 {
-            font-size: 1.2rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .step-item h4 i {
-            color: #d4af37;
-        }
-
-        .step-item p {
-            font-size: 1rem;
-            margin-bottom: 0;
-        }
-
-        /* FAQ Section */
-        .faq-container {
-            text-align: left;
-            margin-top: 2rem;
-        }
-
-        details {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        summary {
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #ffffff;
-        }
-
-        summary::-webkit-details-marker {
-            display: none;
-        }
-
-        summary::after {
-            content: '\25BC';
-            color: #d4af37;
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
-        details[open] summary::after {
-            transform: rotate(180deg);
-        }
-
-        details p {
-            margin-top: 1rem;
-            margin-bottom: 0;
-            font-size: 0.95rem;
-            color: #cccccc;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: #cccccc;
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: transform 0.3s;
         }
 
-        .footer-links a:hover {
-            color: #d4af37;
-        }
+        .floating-wa:hover { transform: scale(1.05); }
 
-        .footer-copy {
-            font-size: 0.8rem;
-            color: #888888;
-        }
-
-        /* Responsive */
+        /* Features Grid */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .feature-item { background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); font-weight: 600; color: #ffffff; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .feature-item i { font-size: 2.5rem; color: #d4af37; }
+        
+        /* FAQ Section */
+        .faq-container details { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; margin-bottom: 1rem; padding: 1rem; text-align: left; }
+        .faq-container summary { font-weight: 600; color: #fff; cursor: pointer; }
+        
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.75rem; }
+            .brand-logo { font-size: 2rem; }
             .container { padding: 2rem 1rem; }
             .glass-card { padding: 2rem; }
-            .footer-links { flex-direction: column; gap: 1rem; }
+            .floating-wa { padding: 15px; border-radius: 50%; }
+            .floating-wa span { display: none; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Promo Bar -->
+    <div class="promo-bar">
+        🔥 EXCLUSIVE DROP: High Win-Rate Accounts Just Added!
+    </div>
 
     <!-- Background Video -->
     <video autoplay loop muted playsinline id="bg-video">
@@ -322,21 +234,38 @@
         
         <!-- Hero Section -->
         <header class="glass-card">
-            <h1>Premium Mobile Legends Accounts</h1>
+            <div class="brand-logo">SkinsWarehouseMLBB</div>
             <p>Own rare skins, exclusive collections, and high-value MLBB accounts from a trusted seller.</p>
             <p>Every purchase begins with a simple WhatsApp conversation.</p>
             <a href="https://whatsapp.com/channel/0029Vb7yIAs4Y9lsQqwdPj0i" target="_blank" class="wa-btn">
-                <i class='bx bxl-whatsapp'></i> Contact on WhatsApp
+                <i class='bx bxl-whatsapp'></i> View Accounts on WhatsApp
             </a>
-            <div class="scroll-down"><i class='bx bx-chevron-down'></i></div>
         </header>
 
-        <!-- About Section -->
+        <!-- Account Image Showcase Slider -->
         <section class="glass-card">
-            <h2>About</h2>
-            <h3>Welcome to SkinsWarehouseMLBB</h3>
-            <p>SkinsWarehouseMLBB is your trusted destination for premium Mobile Legends accounts. Instead of browsing endless listings, simply contact us on WhatsApp and we'll help you find the perfect account based on your budget and preferences.</p>
-            <p>Fast responses, transparent communication, and a smooth buying experience—every step of the way.</p>
+            <h2>Featured Accounts</h2>
+            <p>A sneak peek at the caliber of accounts currently rotating through our inventory.</p>
+            
+            <div class="slider-container">
+                <!-- All 12 Images Linked Here -->
+                <div class="slides active"><img src="1.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="2.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="3.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="4.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="5.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="6.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="7.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="8.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="9.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="10.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="11.jpg" alt="Premium MLBB Account Screenshot"></div>
+                <div class="slides"><img src="12.jpg" alt="Premium MLBB Account Screenshot"></div>
+
+                <!-- Navigation Buttons -->
+                <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
         </section>
 
         <!-- Why Choose Us Section -->
@@ -347,31 +276,6 @@
                 <div class="feature-item"><i class='bx bx-crown'></i> Premium Accounts</div>
                 <div class="feature-item"><i class='bx bx-diamond'></i> Rare Skins</div>
                 <div class="feature-item"><i class='bx bx-user-check'></i> Personalized</div>
-                <div class="feature-item"><i class='bx bx-lock-alt'></i> Secure Transactions</div>
-                <div class="feature-item"><i class='bx bx-support'></i> Fast Support</div>
-            </div>
-        </section>
-
-        <!-- How It Works Section -->
-        <section class="glass-card">
-            <h2>How It Works</h2>
-            <div class="steps">
-                <div class="step-item">
-                    <h4><i class='bx bx-message-rounded-dots'></i> 1. Contact Us</h4>
-                    <p>Tap the WhatsApp button to start a chat.</p>
-                </div>
-                <div class="step-item">
-                    <h4><i class='bx bx-search-alt-2'></i> 2. Tell Us What You Need</h4>
-                    <p>Share your budget, preferred skins, rank, or heroes.</p>
-                </div>
-                <div class="step-item">
-                    <h4><i class='bx bx-images'></i> 3. Receive Options</h4>
-                    <p>We'll send you matching accounts with screenshots and complete details.</p>
-                </div>
-                <div class="step-item">
-                    <h4><i class='bx bx-check-shield'></i> 4. Secure Purchase</h4>
-                    <p>Once you've chosen an account, we'll guide you through the purchase securely.</p>
-                </div>
             </div>
         </section>
 
@@ -381,11 +285,7 @@
             <div class="faq-container">
                 <details>
                     <summary>How do I know this is safe?</summary>
-                    <p>We pride ourselves on transparency. All communication and transactions are handled securely through our official WhatsApp channel, ensuring personal support every step of the way.</p>
-                </details>
-                <details>
-                    <summary>What payment methods do you accept?</summary>
-                    <p>We accept various secure payment methods which will be discussed and finalized during our WhatsApp consultation to ensure your comfort and security.</p>
+                    <p>All communication and transactions are handled securely through our official WhatsApp channel, ensuring personal support every step of the way.</p>
                 </details>
                 <details>
                     <summary>How fast will I get the account details?</summary>
@@ -394,26 +294,37 @@
             </div>
         </section>
 
-        <!-- Final CTA Section -->
-        <section class="glass-card">
-            <h2>Ready to Find Your Account?</h2>
-            <p>Start a conversation with SkinsWarehouseMLBB on WhatsApp and let us help you find the perfect MLBB account.</p>
-            <a href="https://whatsapp.com/channel/0029Vb7yIAs4Y9lsQqwdPj0i" target="_blank" class="wa-btn">
-                <i class='bx bxl-whatsapp'></i> Chat on WhatsApp
-            </a>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="https://whatsapp.com/channel/0029Vb7yIAs4Y9lsQqwdPj0i" target="_blank">Contact Us</a>
-            </div>
-            <p class="footer-copy">&#169; 2026 SkinsWarehouseMLBB. All rights reserved.</p>
-        </footer>
-
     </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://whatsapp.com/channel/0029Vb7yIAs4Y9lsQqwdPj0i" target="_blank" class="floating-wa">
+        <i class='bx bxl-whatsapp'></i> <span>Message Us</span>
+    </a>
+
+    <!-- Slider Javascript -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slides");
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove("active"));
+            
+            if (index >= slides.length) currentSlide = 0;
+            if (index < 0) currentSlide = slides.length - 1;
+            
+            slides[currentSlide].classList.add("active");
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance slider every 4 seconds
+        setInterval(() => {
+            changeSlide(1);
+        }, 4000);
+    </script>
 
 </body>
 </html>
