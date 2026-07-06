@@ -29,8 +29,9 @@
 
     <link rel="icon" type="image/png" href="Favicon.png">
     
-    <!-- Google Fonts for a premium look -->
+    <!-- Google Fonts & BoxIcons -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     
     <style>
         /* CSS Reset & Base Styles */
@@ -58,18 +59,16 @@
             z-index: -2;
         }
 
-        /* Dark Overlay to make text readable */
         .video-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(10, 10, 15, 0.7); /* Deep dark tint */
+            background: rgba(10, 10, 15, 0.7);
             z-index: -1;
         }
 
-        /* Main Content Container */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -96,7 +95,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(90deg, #d4af37, #f3e5ab); /* Premium Gold */
+            background: linear-gradient(90deg, #d4af37, #f3e5ab);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -124,7 +123,10 @@
 
         /* WhatsApp Button */
         .wa-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             background-color: #25D366;
             color: #ffffff;
             padding: 15px 35px;
@@ -143,7 +145,25 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
 
-        /* Features Grid */
+        .wa-btn i {
+            font-size: 1.4rem;
+        }
+
+        /* Scroll Down Animation */
+        .scroll-down {
+            margin-top: 2rem;
+            animation: bounce 2s infinite;
+            color: #d4af37;
+            font-size: 2rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        /* Features Grid with Icons */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -158,6 +178,15 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             font-weight: 600;
             color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            color: #d4af37;
         }
 
         /* How it Works Steps */
@@ -170,17 +199,104 @@
             margin-bottom: 1.5rem;
             padding-left: 1.5rem;
             border-left: 2px solid #d4af37;
+            position: relative;
         }
 
         .step-item h4 {
             font-size: 1.2rem;
             color: #ffffff;
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-item h4 i {
+            color: #d4af37;
         }
 
         .step-item p {
             font-size: 1rem;
             margin-bottom: 0;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        summary {
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '\25BC';
+            color: #d4af37;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 1rem;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: #888888;
         }
 
         /* Responsive */
@@ -189,6 +305,7 @@
             h2 { font-size: 1.75rem; }
             .container { padding: 2rem 1rem; }
             .glass-card { padding: 2rem; }
+            .footer-links { flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
@@ -208,7 +325,10 @@
             <h1>Premium Mobile Legends Accounts</h1>
             <p>Own rare skins, exclusive collections, and high-value MLBB accounts from a trusted seller.</p>
             <p>Every purchase begins with a simple WhatsApp conversation.</p>
-            <a href="https://whatsapp.com/channel/0029Vb7yIAs4Y9lsQqwdPj0i" target="_blank" class="wa-btn">Contact on WhatsApp</a>
+            <a href="https://whatsapp.com/channel/0029Vb7yIAs4Y9lsQqwdPj0i" target="_blank" class="wa-btn">
+                <i class='bx bxl-whatsapp'></i> Contact on WhatsApp
+            </a>
+            <div class="scroll-down"><i class='bx bx-chevron-down'></i></div>
         </header>
 
         <!-- About Section -->
@@ -223,12 +343,12 @@
         <section class="glass-card">
             <h2>Why SkinsWarehouse?</h2>
             <div class="features-grid">
-                <div class="feature-item">Trusted Seller</div>
-                <div class="feature-item">Premium MLBB Accounts</div>
-                <div class="feature-item">Rare & Exclusive Skins</div>
-                <div class="feature-item">Personalized Recommendations</div>
-                <div class="feature-item">Secure Transactions</div>
-                <div class="feature-item">Fast WhatsApp Support</div>
+                <div class="feature-item"><i class='bx bx-shield-alt-2'></i> Trusted Seller</div>
+                <div class="feature-item"><i class='bx bx-crown'></i> Premium Accounts</div>
+                <div class="feature-item"><i class='bx bx-diamond'></i> Rare Skins</div>
+                <div class="feature-item"><i class='bx bx-user-check'></i> Personalized</div>
+                <div class="feature-item"><i class='bx bx-lock-alt'></i> Secure Transactions</div>
+                <div class="feature-item"><i class='bx bx-support'></i> Fast Support</div>
             </div>
         </section>
 
@@ -237,30 +357,61 @@
             <h2>How It Works</h2>
             <div class="steps">
                 <div class="step-item">
-                    <h4>1. Contact Us</h4>
+                    <h4><i class='bx bx-message-rounded-dots'></i> 1. Contact Us</h4>
                     <p>Tap the WhatsApp button to start a chat.</p>
                 </div>
                 <div class="step-item">
-                    <h4>2. Tell Us What You Need</h4>
+                    <h4><i class='bx bx-search-alt-2'></i> 2. Tell Us What You Need</h4>
                     <p>Share your budget, preferred skins, rank, or heroes.</p>
                 </div>
                 <div class="step-item">
-                    <h4>3. Receive Available Accounts</h4>
+                    <h4><i class='bx bx-images'></i> 3. Receive Options</h4>
                     <p>We'll send you matching accounts with screenshots and complete details.</p>
                 </div>
                 <div class="step-item">
-                    <h4>4. Secure Your Purchase</h4>
+                    <h4><i class='bx bx-check-shield'></i> 4. Secure Purchase</h4>
                     <p>Once you've chosen an account, we'll guide you through the purchase securely.</p>
                 </div>
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section class="glass-card">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <details>
+                    <summary>How do I know this is safe?</summary>
+                    <p>We pride ourselves on transparency. All communication and transactions are handled securely through our official WhatsApp channel, ensuring personal support every step of the way.</p>
+                </details>
+                <details>
+                    <summary>What payment methods do you accept?</summary>
+                    <p>We accept various secure payment methods which will be discussed and finalized during our WhatsApp consultation to ensure your comfort and security.</p>
+                </details>
+                <details>
+                    <summary>How fast will I get the account details?</summary>
+                    <p>Once the secure payment is verified, the account transfer process begins immediately. We guide you through the entire login and securing process.</p>
+                </details>
+            </div>
+        </section>
+
         <!-- Final CTA Section -->
         <section class="glass-card">
-            <h2>Ready to Find Your Next MLBB Account?</h2>
-            <p>Start a conversation with SkinsWarehouse on WhatsApp and let us help you find the perfect account.</p>
-            <a href="https://whatsapp.com/channel/0029Vb7yIAs4Y9lsQqwdPj0i" target="_blank" class="wa-btn">Chat on WhatsApp</a>
+            <h2>Ready to Find Your Account?</h2>
+            <p>Start a conversation with SkinsWarehouse on WhatsApp and let us help you find the perfect MLBB account.</p>
+            <a href="https://whatsapp.com/channel/0029Vb7yIAs4Y9lsQqwdPj0i" target="_blank" class="wa-btn">
+                <i class='bx bxl-whatsapp'></i> Chat on WhatsApp
+            </a>
         </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="https://whatsapp.com/channel/0029Vb7yIAs4Y9lsQqwdPj0i" target="_blank">Contact Us</a>
+            </div>
+            <p class="footer-copy">&#169; 2026 SkinsWarehouse. All rights reserved.</p>
+        </footer>
 
     </div>
 
